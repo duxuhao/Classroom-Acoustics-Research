@@ -8,3 +8,6 @@ The previous research with normal average method has been published on *Applied 
 
 ## Further Research
 In this repo, I am using the machine learning algorithmn to deal with the data that consist 1000 samples. The code book is comming as well.
+
+# Reminder
+The author is holding the right to use the data upload in this repo for research and publication. If you want to use our data, please email us to get the right to do it. Thank you!
