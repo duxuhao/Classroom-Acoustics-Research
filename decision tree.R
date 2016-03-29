@@ -1,0 +1,17 @@
+XData<- read.table("XData.txt")
+YData<- read.table("YData.txt")
+XT<- read.table("XT.txt")
+
+SI.Data <- cbind(XData,YData)
+colnames(SI.Data) <- c("SPL","SNR","RT","G","BN","SI")
+colnames(XData) <- c("SPL","SNR","RT","G","BN")
+colnames(XT) <- c("SPL","SNR","RT","G","BN")
+library(party)
+myFormula <- SI ~ SPL + SNR + RT + G
+SI_ctree <- ctree(myFormula, data=SI.Data)
+plot(SI_ctree)
+plot(SI_ctree, type="simple")
+SIVA <- predict(SI_ctree, newdata = XData)
+SIPred <- predict(SI_ctree, newdata = XT)
+write.table(SIVA, file = 'CT.txt')
+write.table(SIPred, file = 'CT_L.txt')

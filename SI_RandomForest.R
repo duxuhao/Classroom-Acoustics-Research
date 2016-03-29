@@ -1,0 +1,11 @@
+library(randomForest)
+XData<- read.table("XData.txt")
+YData<- read.table("YData.txt")
+
+SI.Data <- cbind(XData,YData)
+colnames(SI.Data) <- c("SPL","SNR","RT","G","BN","SI")
+set.seed(10)
+SI.rf <- randomForest(SI ~ ., data=SI.Data[-5], importance=TRUE,proximity=TRUE)
+print(SI.rf)
+print(round(importance(SI.rf), 2))
+varImpPlot(SI.rf)
